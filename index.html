@@ -13,31 +13,30 @@
             overflow: hidden;
             background-color: #000000;
         }
-        
-        /* A mágica acontece aqui: o container esconde o que vazar da borda inferior */
-        .visto-wrapper-mask {
+
+        /* Container principal que cria o espaço seguro na base para a barra do Canva */
+        .visto-viewport {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(100% - 50px); /* Reserva 50px na base para a barra respirar */
             overflow: hidden;
         }
 
-        /* O iframe fica um pouco maior que a tela, empurrando a barra para a zona invisível */
+        /* O iframe é levemente reduzido para caber na nova área sem cortar absolutamente nada */
         iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: calc(100% + 45px); /* Aumenta o tamanho exato da barra de controle */
+            height: 100%;
             border: none;
+            transform: scale(0.97); /* Reduz em 3% o e-book para dar o recuo perfeito */
+            transform-origin: top center; /* Garante que o alinhamento comece pelo topo */
         }
     </style>
 </head>
 <body>
 
-    <div class="visto-wrapper-mask">
+    <div class="visto-viewport">
         <iframe 
             src="https://www.canva.com/design/DAHM2e0tPzc/vncxVURq2SgVhKoe3oKDIA/view?embed" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
