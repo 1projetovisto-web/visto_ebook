@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ebook Core0gam3 - Projeto V.I.S.T.O</title>
     <style>
-        /* Garante que o e-book ocupe a tela inteira sem barras de rolagem duplas */
         html, body {
             margin: 0;
             padding: 0;
@@ -14,25 +13,31 @@
             overflow: hidden;
             background-color: #000000;
         }
-        .visto-player-container {
+        
+        /* A mágica acontece aqui: o container esconde o que vazar da borda inferior */
+        .visto-wrapper-mask {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            overflow: hidden;
         }
+
+        /* O iframe fica um pouco maior que a tela, empurrando a barra para a zona invisível */
         iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(100% + 45px); /* Aumenta o tamanho exato da barra de controle */
             border: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="visto-player-container">
-        <!-- Seu link oficial do Canva configurado com permissões de mídia e interatividade -->
+    <div class="visto-wrapper-mask">
         <iframe 
             src="https://www.canva.com/design/DAHM2e0tPzc/vncxVURq2SgVhKoe3oKDIA/view?embed" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
